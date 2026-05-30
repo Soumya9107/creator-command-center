@@ -39,3 +39,17 @@ Creator Command Center solves this with a single SQL query across all your platf
 ---
 
 ## 📁 Project Structure
+
+creator-command-center/
+├── sources/
+│   ├── youtube.yaml       ← Custom Coral source spec
+│   ├── twitter.yaml       ← Custom Coral source spec
+│   └── discord.yaml       ← Custom Coral source spec
+├── queries/
+│   ├── weekly_summary.sql
+│   └── audience_questions.sql
+├── agent/
+│   └── main.py            ← Runs queries & generates dashboard
+├── Dockerfile
+├── docker-compose.yml
+└── index.html             ← Live dashboard
