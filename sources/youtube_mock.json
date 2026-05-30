@@ -1,0 +1,7 @@
+[
+  {"video_id": "v001", "title": "How to build a personal agent", "published_at": "2026-05-28T10:00:00Z", "channel_title": "MyChannel", "views": 1200, "likes": 95},
+  {"video_id": "v002", "title": "Docker for beginners", "published_at": "2026-05-25T10:00:00Z", "channel_title": "MyChannel", "views": 850, "likes": 72},
+  {"video_id": "v003", "title": "Python API tutorial", "published_at": "2026-05-20T10:00:00Z", "channel_title": "MyChannel", "views": 2100, "likes": 180},
+  {"video_id": "v004", "title": "SQL for developers", "published_at": "2026-05-15T10:00:00Z", "channel_title": "MyChannel", "views": 640, "likes": 48},
+  {"video_id": "v005", "title": "Building with Coral", "published_at": "2026-05-10T10:00:00Z", "channel_title": "MyChannel", "views": 3200, "likes": 260}
+]

@@ -1,0 +1,62 @@
+name: twitter
+version: 0.1.0
+dsl_version: 3
+backend: http
+base_url: https://api.twitter.com/2
+
+inputs:
+  TWITTER_BEARER_TOKEN:
+    kind: secret
+    hint: Twitter API v2 Bearer Token from developer.twitter.com
+  TWITTER_USER_ID:
+    kind: variable
+    hint: Your numeric Twitter User ID
+
+
+
+tables:
+  - name: tweets
+    description: Your recent tweets with engagement metrics
+    request:
+      method: GET
+      path: "/users/{{input.TWITTER_USER_ID}}/tweets"
+      query:
+        - name: max_results
+          from: literal
+          value: "100"
+        - name: tweet.fields
+          from: literal
+          value: "public_metrics,created_at,text"
+    response:
+      rows_path:
+        - data
+    columns:
+      - name: id
+        type: Utf8
+      - name: text
+        type: Utf8
+      - name: created_at
+        type: Utf8
+
+  - name: mentions
+    description: Recent mentions of your account
+    request:
+      method: GET
+      path: "/users/{{input.TWITTER_USER_ID}}/mentions"
+      query:
+        - name: max_results
+          from: literal
+          value: "100"
+        - name: tweet.fields
+          from: literal
+          value: "public_metrics,created_at,text"
+    response:
+      rows_path:
+        - data
+    columns:
+      - name: id
+        type: Utf8
+      - name: text
+        type: Utf8
+      - name: created_at
+        type: Utf8

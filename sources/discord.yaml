@@ -1,0 +1,55 @@
+name: discord
+version: 0.1.0
+dsl_version: 3
+backend: http
+base_url: https://discord.com/api/v10
+
+inputs:
+  DISCORD_BOT_TOKEN:
+    kind: secret
+    hint: Discord Bot Token from discord.com/developers/applications
+  DISCORD_GUILD_ID:
+    kind: variable
+    hint: Your Discord Server (Guild) ID
+  DISCORD_CHANNEL_ID:
+    kind: variable
+    hint: Your Discord Channel ID
+
+
+
+tables:
+  - name: messages
+    description: Messages from your Discord channel
+    request:
+      method: GET
+      path: "/channels/{{input.DISCORD_CHANNEL_ID}}/messages"
+      query:
+        - name: limit
+          from: literal
+          value: "100"
+    response:
+      rows_path:
+        - $
+    columns:
+      - name: id
+        type: Utf8
+      - name: content
+        type: Utf8
+      - name: timestamp
+        type: Utf8
+
+  - name: members
+    description: Members of your Discord server
+    request:
+      method: GET
+      path: "/guilds/{{input.DISCORD_GUILD_ID}}/members"
+      query:
+        - name: limit
+          from: literal
+          value: "100"
+    response:
+      rows_path:
+        - $
+    columns:
+      - name: joined_at
+        type: Utf8

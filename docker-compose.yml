@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  coral-agent:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+      - coral-config:/root/.config/coral
+    stdin_open: true
+    tty: true
+
+volumes:
+  coral-config:

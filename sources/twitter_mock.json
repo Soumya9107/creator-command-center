@@ -1,0 +1,7 @@
+[
+  {"id": "1", "text": "Just posted a new video! Check it out", "created_at": "2026-05-28T10:00:00Z", "likes": 42, "retweets": 12},
+  {"id": "2", "text": "Working on something exciting for my audience", "created_at": "2026-05-27T10:00:00Z", "likes": 38, "retweets": 8},
+  {"id": "3", "text": "What content do you want to see next?", "created_at": "2026-05-26T10:00:00Z", "likes": 55, "retweets": 15},
+  {"id": "4", "text": "Behind the scenes of my latest project", "created_at": "2026-05-25T10:00:00Z", "likes": 61, "retweets": 20},
+  {"id": "5", "text": "Thanks for 1000 followers! More content coming soon", "created_at": "2026-05-24T10:00:00Z", "likes": 89, "retweets": 30}
+]

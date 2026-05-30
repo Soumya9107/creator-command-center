@@ -1,0 +1,83 @@
+name: youtube
+version: 0.1.0
+dsl_version: 3
+backend: http
+base_url: https://www.googleapis.com/youtube/v3
+
+inputs:
+  YOUTUBE_API_KEY:
+    kind: secret
+    hint: YouTube Data API v3 key from Google Cloud Console
+  YOUTUBE_CHANNEL_ID:
+    kind: variable
+    hint: Your YouTube Channel ID (starts with UC...)
+
+tables:
+  - name: videos
+    description: Videos from your YouTube channel
+    request:
+      method: GET
+      path: /search
+      query:
+        - name: part
+          from: literal
+          value: snippet
+        - name: type
+          from: literal
+          value: video
+        - name: channelId
+          from: template
+          template: "{{input.YOUTUBE_CHANNEL_ID}}"
+        - name: maxResults
+          from: literal
+          value: "50"
+        - name: key
+          from: template
+          template: "{{input.YOUTUBE_API_KEY}}"
+    response:
+      rows_path:
+        - items
+    columns:
+      - name: id__videoId
+        type: Utf8
+      - name: snippet__title
+        type: Utf8
+      - name: snippet__publishedAt
+        type: Utf8
+      - name: snippet__channelTitle
+        type: Utf8
+      - name: snippet__description
+        type: Utf8
+
+  - name: video_stats
+    description: Stats for videos
+    filters:
+      - name: video_id
+        required: true
+    request:
+      method: GET
+      path: /videos
+      query:
+        - name: part
+          from: literal
+          value: "statistics,snippet"
+        - name: id
+          from: template
+          template: "{{filter.video_id}}"
+        - name: key
+          from: template
+          template: "{{input.YOUTUBE_API_KEY}}"
+    response:
+      rows_path:
+        - items
+    columns:
+      - name: id
+        type: Utf8
+      - name: snippet__title
+        type: Utf8
+      - name: statistics__viewCount
+        type: Utf8
+      - name: statistics__likeCount
+        type: Utf8
+      - name: statistics__commentCount
+        type: Utf8

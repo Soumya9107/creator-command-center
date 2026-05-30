@@ -1,0 +1,25 @@
+name: youtube_local
+version: 0.1.0
+dsl_version: 3
+backend: file
+
+tables:
+  - name: videos
+    description: YouTube videos
+    format: json
+    source:
+      location: file:///app/sources/
+      glob: "youtube_mock.json"
+    columns:
+      - name: video_id
+        type: Utf8
+      - name: title
+        type: Utf8
+      - name: published_at
+        type: Utf8
+      - name: channel_title
+        type: Utf8
+      - name: views
+        type: Int64
+      - name: likes
+        type: Int64

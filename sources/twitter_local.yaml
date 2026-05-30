@@ -1,0 +1,23 @@
+name: twitter_local
+version: 0.1.0
+dsl_version: 3
+backend: file
+
+tables:
+  - name: tweets
+    description: Twitter tweets
+    format: json
+    source:
+      location: file:///app/sources/
+      glob: "twitter_mock.json"
+    columns:
+      - name: id
+        type: Utf8
+      - name: text
+        type: Utf8
+      - name: created_at
+        type: Utf8
+      - name: likes
+        type: Int64
+      - name: retweets
+        type: Int64
