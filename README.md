@@ -1,8 +1,6 @@
 # 🏴‍☠️ Creator Command Center
 
-> Query your YouTube, Twitter & Discord data as SQL — powered by [Coral](https://withcoral.com)
-
-Built for the **Pirates of the Coral-bean Hackathon** by [WeMakeDevs](https://wemakedevs.org)
+> Query your YouTube & Twitter data as SQL — powered by [Coral](https://withcoral.com)
 
 🔗 **[Live Dashboard](https://creator-command-center-seven.vercel.app/)**
 
@@ -10,7 +8,7 @@ Built for the **Pirates of the Coral-bean Hackathon** by [WeMakeDevs](https://we
 
 ## 🤔 The Problem
 
-As a content creator, you're constantly switching between YouTube, Twitter, and Discord
+As a content creator, you're constantly switching between YouTube and Twitter
 just to answer one question — *what's actually working?*
 
 Creator Command Center solves this with a single SQL query across all your platforms.
@@ -34,7 +32,6 @@ Creator Command Center solves this with a single SQL query across all your platf
 - **Docker** — Isolated environment
 - **YouTube Data API v3** — Video data
 - **Twitter API v2** — Tweet data
-- **Discord API** — Server messages (source spec included)
 
 ---
 
@@ -44,7 +41,6 @@ creator-command-center/
 ├── sources/
 │   ├── youtube.yaml       ← Custom Coral source spec
 │   ├── twitter.yaml       ← Custom Coral source spec
-│   └── discord.yaml       ← Custom Coral source spec
 ├── queries/
 │   ├── weekly_summary.sql
 │   └── audience_questions.sql
